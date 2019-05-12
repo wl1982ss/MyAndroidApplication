@@ -1,13 +1,12 @@
 package com.example.myapplication;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,20 +38,15 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
         Button button = (Button) findViewById(R.id.button);
-//        Button button_pic = (Button) findViewById(R.id.button_pic);
-//        Button button_progress = (Button) findViewById(R.id.button_progress);
         Button button_dialog = (Button) findViewById(R.id.button_dialog);
-//        Button button_progress_dialog = (Button) findViewById(R.id.button_progress_dialog);
-//        Button button_web_view = (Button) findViewById(R.id.button_web_view);
         Button button_send_request = (Button) findViewById(R.id.button_send_request);
 
         show_message = (TextView) findViewById(R.id.text_view);
         editText = (EditText) findViewById(R.id.edit_text);
-//        imageView = (ImageView) findViewById(R.id.image_view);
-//        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-//        webView = (WebView) findViewById(R.id.web_view);
+
         responseText = (TextView) findViewById(R.id.response_text);
 //        button.setOnClickListener(new View.OnClickListener(){
 //            @Override
@@ -62,11 +56,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 //            }
 //        });
         button.setOnClickListener(this);
-//        button_pic.setOnClickListener(this);
-//        button_progress.setOnClickListener(this);
+
         button_dialog.setOnClickListener(this);
-//        button_progress_dialog.setOnClickListener(this);
-//        button_web_view.setOnClickListener(this);
+
         button_send_request.setOnClickListener(this);
     }
 
@@ -122,8 +114,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 //                webView.loadUrl("http://www.baidu.com");
 //                break;
             case R.id.button_send_request:
-                sendRequestWithHttpURLConnection();
+                //sendRequestWithHttpURLConnection();
                 //sendRequestWithOkHttp();
+                Intent intent = new Intent(this, WeatherActivity.class);
+                intent.putExtra("weather_id", 1);
+                startActivity(intent);
+
                 break;
             default:
                 break;
